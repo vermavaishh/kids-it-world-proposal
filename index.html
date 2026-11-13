@@ -1,0 +1,933 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><style>[hidden]{display:none!important}img{max-width:100%}body{margin:0}</style><title>Kids I.T. World Rebrand v2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&family=Baloo+2:wght@600;700;800&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Concept: a "Digital Progress Report" for a school.
+   Chalkboard-navy bands, ruled exercise-book paper, a teacher's red pen for every critique,
+   marigold for every promise. Single committed light look with explicit colours. */
+:root{
+  --board:#13205A; --board-2:#0D1742; --chalk:#EEF1FA;
+  --paper:#FBFCFF; --rule:#DCE4F5; --margin:#F2B7B3;
+  --ink:#141A33; --muted:#5B6382; --line:#E1E6F2; --card:#FFFFFF;
+  --pen:#D63230; --pen-soft:#FDECEA;
+  --gold:#F4B41A; --gold-soft:#FFF5D9; --leaf:#22955A; --leaf-soft:#E3F4EA; --sky:#3B6FE0;
+  --navy:#1B2D72; --red:#D7263D; --cream:#FFF8E6;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Figtree","Segoe UI",system-ui,sans-serif;
+  --f-school:"Baloo 2","Figtree",system-ui,sans-serif;
+  --f-hand:"Caveat","Segoe Print","Comic Sans MS",cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:70px}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--board-2)}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.05;text-wrap:balance;margin:0}
+h2{font-size:clamp(34px,5.4vw,64px);font-weight:800;letter-spacing:-.03em}
+h3{font-size:clamp(22px,2.4vw,28px);font-weight:800;letter-spacing:-.01em}
+p{margin:0}
+.lede{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:60ch}
+.hand{font-family:var(--f-hand);color:var(--pen);font-weight:700;line-height:1.05}
+.kicker{display:flex;align-items:center;gap:12px;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.kicker b{font-family:var(--f-display);font-size:13px;color:var(--ink);background:var(--gold);border-radius:6px;padding:2px 8px;letter-spacing:.06em}
+section{padding-block:clamp(64px,9vw,120px)}
+.ruled{background-color:var(--paper);background-image:linear-gradient(90deg,transparent 0 46px,var(--margin) 46px 48px,transparent 48px),repeating-linear-gradient(180deg,transparent 0 31px,var(--rule) 31px 32px)}
+.board{background:var(--board);color:var(--chalk);background-image:radial-gradient(ellipse at 20% 0%,rgba(255,255,255,.06),transparent 60%),radial-gradient(ellipse at 90% 100%,rgba(244,180,26,.08),transparent 55%)}
+.board .lede{color:#B8C1E3}
+.board .kicker{color:#9CA7D2}
+.stamp{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-display);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);border:2px solid var(--leaf);border-radius:6px;padding:4px 10px;transform:rotate(-3deg);background:rgba(255,255,255,.85)}
+
+/* ---------- Top nav ---------- */
+.topnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(13,23,66,.94);backdrop-filter:blur(8px);color:#fff}
+.topnav .wrap{display:flex;align-items:center;gap:16px;height:56px}
+.topnav .mark{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:800;font-size:15px;white-space:nowrap}
+.topnav .mark img{width:28px;height:28px;background:#fff;border-radius:50%;padding:2px}
+.topnav nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto;min-width:0}
+.topnav nav::-webkit-scrollbar{display:none}
+.topnav nav a{color:#AEB8E0;text-decoration:none;font-size:13px;font-weight:600;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.topnav nav a span{font-family:var(--f-display);color:var(--gold);margin-right:4px}
+.topnav nav a.on{background:rgba(255,255,255,.12);color:#fff}
+.topnav nav a:focus-visible{outline:2px solid var(--gold)}
+
+/* ---------- Cover ---------- */
+.cover{position:relative;overflow:hidden;padding-block:clamp(56px,8vw,110px) clamp(64px,8vw,100px)}
+.cover .wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:center}
+.cover .wrap > *{min-width:0}
+.cover .label{font-family:var(--f-display);font-weight:600;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+.cover h1{font-size:clamp(44px,7.4vw,104px);font-weight:800;letter-spacing:-.045em;line-height:.95;margin-top:18px}
+.cover h1 .u{position:relative;color:var(--gold)}
+.cover h1 .u svg{position:absolute;left:-1%;bottom:-.14em;width:102%;height:.3em}
+.cover .sub{margin-top:28px;font-size:clamp(17px,1.7vw,21px);color:#C5CDEB;max-width:44ch}
+.cover .services{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.cover .services span{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.slip{background:var(--paper);color:var(--ink);border-radius:6px;padding:28px 26px 24px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);transform:rotate(2deg);position:relative;background-image:repeating-linear-gradient(180deg,transparent 0 27px,var(--rule) 27px 28px)}
+.slip::before{content:"";position:absolute;top:-12px;left:50%;width:110px;height:26px;margin-left:-55px;background:rgba(244,180,26,.75);transform:rotate(-3deg)}
+.slip .crest{width:84px;height:84px;margin:0 auto 10px;display:block}
+.slip h4{text-align:center;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.slip dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:16px 0 0;font-size:14px;line-height:28px}
+.slip dt{color:var(--muted)}
+.slip dd{margin:0;font-weight:700;min-width:0;overflow-wrap:anywhere}
+.slip .hand{font-size:26px;text-align:center;margin-top:12px;transform:rotate(-2deg)}
+.cover .chalkline{position:absolute;left:0;right:0;bottom:0;height:8px;background:linear-gradient(90deg,var(--red) 0 25%,var(--gold) 25% 50%,var(--leaf) 50% 75%,var(--sky) 75%)}
+
+/* ---------- 1 Brand ---------- */
+.story{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:end;margin-top:28px}
+.story > *{min-width:0}
+.growth{display:flex;align-items:flex-end;gap:clamp(10px,2vw,22px);margin-top:36px;flex-wrap:wrap}
+.growth .from,.growth .to{display:grid;gap:2px}
+.growth .from b{font-family:var(--f-display);font-size:clamp(48px,7vw,84px);font-weight:800;line-height:.9;color:var(--muted)}
+.growth .to b{font-family:var(--f-display);font-size:clamp(68px,11vw,140px);font-weight:800;line-height:.85;letter-spacing:-.04em;color:var(--navy)}
+.growth span{font-size:14px;font-weight:600;color:var(--muted)}
+.growth .arrow{font-family:var(--f-hand);font-size:clamp(28px,4vw,44px);color:var(--pen);padding-bottom:22px}
+.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink);margin-top:36px}
+.mini-stats div{padding:14px 12px 0 0}
+.mini-stats b{display:block;font-family:var(--f-display);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.mini-stats span{font-size:14px;color:var(--muted)}
+.facts-list{display:grid;border-top:1px solid var(--line);background:rgba(251,252,255,.85)}
+.facts-list div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.facts-list i{font-style:normal;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.presence{margin-top:56px;display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0;position:relative}
+.chip i{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chip b{font-size:14px;overflow-wrap:anywhere;line-height:1.3}
+.chip small{font-size:12.5px;color:var(--muted);line-height:1.35}
+.chip.warn{border-color:var(--margin)}
+.chip.warn::after{content:"!";position:absolute;top:-9px;right:-9px;width:22px;height:22px;border-radius:50%;background:var(--pen);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
+
+/* ---------- 2 Report card ---------- */
+.report{margin-top:44px;background:var(--card);border:2px solid var(--ink);border-radius:4px;box-shadow:10px 10px 0 var(--gold);overflow:hidden}
+.report-head{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:20px 24px;border-bottom:2px solid var(--ink);background:var(--cream)}
+.report-head img{width:56px;height:56px}
+.report-head h3{font-size:22px}
+.report-head p{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.report-head .term{font-family:var(--f-display);font-weight:800;font-size:13px;text-align:right;color:var(--muted)}
+.rc-scroll{overflow-x:auto}
+.rc{width:100%;min-width:760px;border-collapse:collapse}
+.rc th{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 20px;border-bottom:1px solid var(--line)}
+.rc td{padding:16px 20px;border-bottom:1px dashed var(--line);vertical-align:middle}
+.rc tr:last-child td{border-bottom:0}
+.rc .subj{font-family:var(--f-display);font-weight:800;font-size:17px;white-space:nowrap}
+.rc .found{font-size:14.5px;color:var(--muted);max-width:44ch}
+.grade{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;font-family:var(--f-hand);font-size:32px;font-weight:700;color:var(--pen);border:2.5px solid var(--pen);transform:rotate(-6deg)}
+.grade.t{color:var(--leaf);border-color:var(--leaf);transform:rotate(4deg)}
+.grade.ok{color:#B07A00;border-color:#B07A00}
+.rc .remark{font-family:var(--f-hand);font-size:22px;color:var(--pen);line-height:1.1;max-width:22ch}
+.report-foot{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;padding:22px 24px;border-top:2px solid var(--ink);background:var(--paper)}
+.report-foot .hand{font-size:clamp(24px,3vw,32px)}
+.report-foot small{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+.sign{font-family:var(--f-hand);font-size:28px;color:var(--navy);border-bottom:1.5px solid var(--ink);padding:0 12px;white-space:nowrap}
+
+.doors{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr) .9fr;gap:16px;align-items:stretch}
+.door{background:var(--card);border:1px solid var(--line);border-radius:16px 16px 6px 6px;padding:20px;display:flex;flex-direction:column;gap:10px;position:relative;min-width:0}
+.door::before{content:"";position:absolute;top:0;left:20px;right:20px;height:5px;border-radius:0 0 6px 6px;background:var(--muted)}
+.door .role{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.door h4{font-size:19px;overflow-wrap:anywhere}
+.door p{font-size:14.5px;color:var(--muted)}
+.door .hand{font-size:22px;margin-top:auto;padding-top:6px;color:var(--pen)}
+.one{background:var(--board);color:#fff;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.one b{font-family:var(--f-display);font-size:26px;line-height:1.05;color:var(--gold)}
+.one p{color:#C5CDEB;font-size:14.5px}
+.one .arr{font-family:var(--f-hand);font-size:40px;color:var(--gold);line-height:1}
+
+.marked{margin-top:72px;display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:start}
+.marked > *{min-width:0}
+.frame{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 24px 50px -28px rgba(20,26,51,.45)}
+.frame .bar{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#EEF1F7;border-bottom:1px solid var(--line)}
+.frame .dots{display:flex;gap:6px}.frame .dots i{width:10px;height:10px;border-radius:50%;background:#CBD1DE}
+.frame .url{flex:1;min-width:0;background:#fff;border-radius:6px;padding:3px 12px;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.frame .view{max-height:620px;overflow-y:auto;position:relative}
+.shot{position:relative}
+.shot img{display:block;width:100%}
+.note{position:absolute;z-index:2;pointer-events:none}
+.note .ring{position:absolute;border:2.5px solid var(--pen);border-radius:48% 52% 46% 54%/55% 45% 55% 45%;transform:rotate(-2deg)}
+.note .txt{position:absolute;font-family:var(--f-hand);font-weight:700;color:var(--pen);font-size:clamp(15px,2vw,24px);line-height:1;white-space:nowrap;background:rgba(255,255,255,.9);padding:2px 8px;border-radius:4px;transform:rotate(-3deg)}
+.phone{width:min(290px,100%);margin:0 auto;border:10px solid #161A26;border-radius:34px;overflow:hidden;background:#fff;box-shadow:0 24px 50px -24px rgba(20,26,51,.55)}
+.phone .notch{height:20px;background:#161A26;display:flex;justify-content:center}.phone .notch i{width:76px;height:12px;background:#000;border-radius:0 0 10px 10px}
+.phone .view{max-height:520px;overflow-y:auto;position:relative}
+.side{display:grid;gap:28px}
+.maps{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 24px 50px -28px rgba(20,26,51,.45);display:grid;gap:10px}
+.maps-search{display:flex;gap:10px;align-items:center;border-radius:999px;padding:10px 16px;background:#F1F3F8;font-size:14px;color:#3C4043}
+.maps-search span{font-size:18px;color:#5F6368}
+.maps-row{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:10px 4px;border-bottom:1px solid #EEF0F4}
+.maps-row .pin{width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#EA4335;margin-top:4px}
+.maps-row div{display:grid;gap:1px;font-size:13.5px;color:#5F6368;min-width:0}
+.maps-row b{color:#202124;font-size:15px}
+.maps-row .nr{color:var(--pen);font-weight:700}
+.maps-missing{border:2px dashed var(--pen);border-radius:12px;padding:12px 14px;transform:rotate(-1deg)}
+.maps-missing .hand{font-size:24px}
+.maps-missing div{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px;font-size:14px;color:var(--muted)}
+.maps-missing s{text-decoration-color:var(--pen);text-decoration-thickness:2px}
+.maps-cap{font-size:12.5px;color:var(--muted)}
+.cap{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+
+/* ---------- 3 opportunities ---------- */
+.opps{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.opp{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.opp .area{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.opp .area b{font-family:var(--f-display);font-size:20px}
+.st{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.st.c{background:var(--pen-soft);color:var(--pen)}
+.st.i{background:var(--gold-soft);color:#8A5A00}
+.opp .now{font-size:14.5px;color:var(--muted)}
+.opp .to{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-weight:700;color:var(--leaf);display:flex;gap:8px}
+.opp .to::before{content:"→";font-family:var(--f-display)}
+
+/* ---------- 4 website ---------- */
+.compare{margin-top:44px;position:relative;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);aspect-ratio:16/10;max-width:100%;user-select:none;touch-action:pan-y;--x:50%;background:#fff}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.compare .before{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.compare .handle{position:absolute;top:0;bottom:0;left:var(--x);width:3px;background:var(--gold);transform:translateX(-50%);pointer-events:none}
+.compare .handle::after{content:"⟷";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--board-2);display:grid;place-items:center;font-weight:800;font-size:20px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.compare .lab{position:absolute;top:14px;font-family:var(--f-display);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:6px;pointer-events:none;z-index:1}
+.compare .lab.b{left:14px;background:var(--pen);color:#fff}
+.compare .lab.a{right:14px;background:var(--leaf);color:#fff}
+.compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:2}
+.compare input:focus-visible ~ .handle{outline:3px solid #fff}
+.hint{margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#9CA7D2;font-size:14px;flex-wrap:wrap}
+.hint .hand{color:var(--gold);font-size:24px}
+
+.after-wrap{margin-top:40px;display:grid;grid-template-columns:1fr 280px;gap:32px;align-items:start}
+.after-wrap > *{min-width:0}
+.site{font-family:var(--f-body);color:#1B2140;background:#fff}
+.site .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;border-bottom:1px solid #EEF0F6;flex-wrap:wrap}
+.site .brand{display:flex;align-items:center;gap:10px;font-family:var(--f-school);font-weight:800;color:var(--navy);font-size:20px;line-height:1}
+.site .brand img{width:42px;height:42px}
+.site .brand small{display:block;font-family:var(--f-body);font-weight:600;font-size:11px;color:#6B7290;letter-spacing:.06em;text-transform:uppercase}
+#mock .links span:nth-child(1),#mock .links span:nth-child(4){display:none}
+.site .links{display:flex;gap:16px;font-size:13px;font-weight:600;color:#3A4166;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;font-weight:700;font-size:15px;padding:12px 22px;border:0;cursor:pointer;font-family:var(--f-body)}
+.btn.gold{background:var(--gold);color:var(--board-2)}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn.navy{background:var(--navy);color:#fff}
+.btn:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.site .hero{background:var(--navy);color:#fff;display:grid;grid-template-columns:1.1fr 1fr;align-items:stretch;position:relative;overflow:hidden}
+.site .hero .copy{padding:52px 36px;display:flex;flex-direction:column;gap:20px;justify-content:center;min-width:0}
+.site .hero .pill{align-self:flex-start;background:rgba(244,180,26,.16);color:var(--gold);border-radius:999px;padding:6px 14px;font-weight:700;font-size:13px}
+.site .hero h3{font-family:var(--f-school);font-size:clamp(32px,4vw,52px);line-height:1.02;font-weight:800;letter-spacing:0}
+.site .hero h3 span{color:var(--gold)}
+.site .hero p{color:#CCD3EE;font-size:17px;max-width:42ch}
+.site .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.site .hero .photo{position:relative;min-height:340px;background:url(assets/p9.jpg) center 70%/cover}
+.site .hero .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0,rgba(27,45,114,0) 30%)}
+.site .hero .badge{position:absolute;right:18px;bottom:18px;z-index:1;background:#fff;color:var(--navy);border-radius:14px;padding:12px 16px;font-weight:700;font-size:14px;box-shadow:0 10px 24px -10px rgba(0,0,0,.4)}
+.site .hero .badge b{display:block;font-family:var(--f-school);font-size:28px;color:var(--leaf);line-height:1}
+.site .strip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--gold);color:var(--board-2)}
+.site .strip div{padding:18px 24px;border-right:1px solid rgba(17,30,82,.15)}
+.site .strip b{display:block;font-family:var(--f-school);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.site .strip span{font-size:13px;font-weight:600}
+.site .block{padding:44px 36px}
+.site .k{color:var(--red);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.site h4{font-family:var(--f-school);font-size:30px;color:var(--navy);margin:4px 0 22px;line-height:1.1;letter-spacing:0}
+.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stage{border-radius:14px;padding:18px;background:var(--cream);display:flex;flex-direction:column;gap:6px}
+.stage i{font-style:normal;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.stage b{font-family:var(--f-school);font-size:21px;color:var(--navy);line-height:1.1}
+.stage span{font-size:14px;color:#545B7A}
+.stage:nth-child(1) i{color:var(--red)}.stage:nth-child(2) i{color:#C98A00}.stage:nth-child(3) i{color:var(--leaf)}.stage:nth-child(4) i{color:var(--sky)}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:#F6F8FD}
+.why ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.why li{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:15px}
+.why li::before{content:"✓";width:24px;height:24px;border-radius:50%;background:var(--leaf);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}
+.why li b{color:var(--navy)}
+.why .pics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.why .pics div{border-radius:14px;aspect-ratio:4/5;background-size:cover;background-position:center}
+.founder{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:var(--board-2);color:#fff}
+.founder .mono{width:110px;height:110px;border-radius:50%;background:var(--gold);color:var(--board-2);display:grid;place-items:center;font-family:var(--f-school);font-size:40px;font-weight:800}
+.founder blockquote{margin:0;font-family:var(--f-school);font-size:clamp(21px,2.4vw,28px);line-height:1.2}
+.founder cite{display:block;margin-top:10px;font-style:normal;color:#B9C3EA;font-size:14px}
+.branches{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.branch{border:1px solid #E4E7F1;border-radius:12px;padding:14px;font-size:13px;color:#545B7A;display:flex;flex-direction:column;gap:4px}
+.branch b{font-family:var(--f-school);color:var(--navy);font-size:17px;line-height:1.1}
+.branch a{color:var(--red);font-weight:700;text-decoration:none;margin-top:auto;padding-top:6px}
+.enquire{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;background:var(--cream);align-items:center}
+.form{background:#fff;border-radius:16px;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px;box-shadow:0 12px 30px -18px rgba(17,30,82,.35)}
+.form label{display:grid;gap:4px;font-size:12px;font-weight:700;color:#545B7A;min-width:0}
+.form input,.form select{font:inherit;font-size:14px;font-weight:500;padding:10px 12px;border:1px solid #DCE0EC;border-radius:10px;color:#1B2140;background:#fff;width:100%}
+.form .full{grid-column:1/-1}
+.site footer{background:#0C1540;color:#AEB6D8;padding:22px 36px;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.mini{font-size:13px}
+.mini .m-hero{background:var(--navy);color:#fff;padding:22px 16px;display:grid;gap:12px}
+.mini .m-hero h5{font-family:var(--f-school);font-size:26px;line-height:1.02;margin:0}
+.mini .m-hero h5 span{color:var(--gold)}
+.mini .m-photo{height:170px;background:url(assets/p9.jpg) center 70%/cover}
+.mini .m-stats{display:grid;grid-template-columns:1fr 1fr;background:var(--gold);color:var(--board-2)}
+.mini .m-stats div{padding:10px 14px}.mini .m-stats b{font-family:var(--f-school);font-size:20px;display:block;line-height:1}
+.mini .m-list{padding:16px;display:grid;gap:8px}
+.mini .m-list div{background:var(--cream);border-radius:10px;padding:10px 12px;font-weight:600;color:var(--navy)}
+.mini .m-sticky{position:sticky;bottom:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px;background:#fff;border-top:1px solid #EEF0F6}
+.mini .m-sticky span{border-radius:999px;text-align:center;padding:9px;font-weight:700}
+
+.tree{margin-top:40px;overflow-x:auto;padding-bottom:6px}
+.tree-in{min-width:860px;display:grid;justify-items:center}
+.tree .root{background:var(--board);color:#fff;font-family:var(--f-display);font-weight:800;border-radius:12px;padding:12px 22px}
+.tree .stem{width:2px;height:26px;background:var(--ink)}
+.tree .branches-row{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;width:100%;border-top:2px solid var(--ink)}
+.tree .node{display:grid;justify-items:center;align-content:start;gap:8px}
+.tree .node::before{content:"";width:2px;height:18px;background:var(--ink)}
+.tree .node b{background:var(--card);border:2px solid var(--ink);border-radius:10px;padding:8px 10px;font-family:var(--f-display);font-size:14px;text-align:center;width:100%}
+.tree .node span{font-size:12.5px;color:var(--muted);text-align:center;line-height:1.35}
+.tree .node span.new{color:var(--leaf);font-weight:700}
+.tree .node.hl b{background:var(--gold)}
+.redirects{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.redirects span{font-size:14px;border:1px dashed var(--muted);border-radius:999px;padding:6px 14px;background:var(--card)}
+.redirects b{color:var(--leaf)}
+
+.fixes{margin-top:40px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.fix{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:10px}
+.fix .was{font-family:var(--f-hand);font-size:24px;color:var(--pen);text-decoration:line-through;text-decoration-thickness:2px;line-height:1.1}
+.fix .now{font-size:15.5px;font-weight:600;display:grid;grid-template-columns:22px 1fr;gap:8px}
+.fix .now::before{content:"✓";color:var(--leaf);font-weight:800}
+
+/* ---------- 5 social ---------- */
+.ig-pair{margin-top:44px;display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:center}
+.ig-pair > *{min-width:0}
+.vs{font-family:var(--f-hand);font-size:44px;color:var(--gold);text-align:center}
+.ig{background:#fff;border-radius:26px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);max-width:430px;width:100%;margin:0 auto;color:#111;border:8px solid #161A26}
+.ig .top{padding:16px 16px 10px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
+.ig .av{width:70px;height:70px;border-radius:50%;padding:3px;background:linear-gradient(45deg,#F9CE34,#EE2A7B,#6228D7)}
+.ig .av div{width:100%;height:100%;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden;border:3px solid #fff}
+.ig .av img{width:88%}
+.ig .handle{font-weight:700;font-size:15px}
+.ig .counts{display:flex;gap:14px;font-size:12.5px;color:#333;margin-top:3px;flex-wrap:wrap}
+.ig .bio{padding:0 16px 10px;font-size:13px;line-height:1.45}
+.ig .bio b{display:block}
+.ig .bio a{color:#00376B;font-weight:600;text-decoration:none}
+.ig .hl{display:flex;gap:12px;padding:4px 16px 12px;overflow-x:auto}
+.ig .hl div{display:grid;justify-items:center;gap:4px;font-size:10.5px;flex:none}
+.ig .hl i{width:50px;height:50px;border-radius:50%;border:2px solid #DBDBDB;display:grid;place-items:center;font-style:normal;font-family:var(--f-school);font-weight:800;font-size:14px}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#fff}
+.grid9 > *{aspect-ratio:3/4;overflow:hidden;position:relative;max-width:100%}
+.grid9 img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{display:block;text-align:center;font-family:var(--f-display);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.tag.b{color:#FF8A80}.tag.a{color:#7EE0A8}
+.t{display:flex;flex-direction:column;justify-content:flex-end;padding:9%;color:#fff;font-family:var(--f-school);line-height:1.02;background-size:cover;background-position:center}
+.t .lab{font-family:var(--f-body);font-weight:700;font-size:clamp(7px,1vw,10px);letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+.t .big{font-weight:800;font-size:clamp(13px,2vw,22px)}
+.t.photo::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,30,82,0) 40%,rgba(17,30,82,.92))}
+.t > *{position:relative}
+.grid9 .t .logo{position:absolute;top:7%;right:7%;width:18%;height:auto;aspect-ratio:1;background:#fff;border-radius:50%;padding:2px}
+.t.navy{background:var(--navy);justify-content:center}
+.t.gold{background:var(--gold);color:var(--board-2);justify-content:center}
+.t.cream{background:var(--cream);color:var(--navy);justify-content:center}
+.t.red{background:var(--red);justify-content:center}
+.t .gold-t{color:var(--gold)}
+.t .bar{position:absolute;left:9%;right:9%;bottom:7%;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--red) 0 33%,var(--gold) 33% 66%,var(--leaf) 66%)}
+.ig-notes{margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ig-notes div{border-top:2px solid rgba(255,255,255,.2);padding-top:12px}
+.ig-notes .hand{color:#FF8A80;font-size:26px}
+.ig-notes p{color:#B8C1E3;font-size:14.5px;margin-top:4px}
+
+.fb-pair{margin-top:72px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.fb-pair > *{min-width:0}
+.fb{background:#fff;border-radius:14px;overflow:hidden;color:#111;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.fb .cv{aspect-ratio:2.7/1;background-size:cover;background-position:center}
+.fb .who{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:end;padding:0 16px 12px;margin-top:-30px;position:relative}
+.fb .who .av2{width:70px;height:70px;border-radius:50%;background:#fff;border:4px solid #fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.fb .who .av2 img{width:88%}
+.fb .who b{font-size:16px;display:block}
+.fb .who > div:last-child{padding-top:36px;min-width:0}
+.fb .who small{color:#65676B;font-size:12.5px}
+.fb .info{border-top:1px solid #E4E6EB;padding:12px 16px;font-size:13px;display:grid;gap:6px}
+.fb .info .bad{color:var(--pen);font-weight:700}
+.fb .info .good{color:var(--leaf);font-weight:700}
+.fbnew{background-color:var(--navy)!important;display:grid;grid-template-columns:1.3fr 1fr;align-items:stretch}
+.fbnew .c{padding:6%;display:flex;flex-direction:column;justify-content:center;gap:4px;color:#fff;font-family:var(--f-school);line-height:1.02;min-width:0}
+.fbnew .c i{font-style:normal;font-family:var(--f-body);font-weight:700;font-size:clamp(7px,1.1vw,10px);letter-spacing:.1em;color:var(--gold);text-transform:uppercase}
+.fbnew .c b{font-size:clamp(13px,2vw,21px);font-weight:800}
+.fbnew .c b span{color:var(--gold)}
+.fbnew .p{background:url(assets/p9.jpg) center 65%/cover}
+
+.pillars{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.pillars span{border-radius:999px;padding:10px 16px;font-weight:700;font-size:15px;border:2px solid currentColor}
+.rhythm{margin-top:24px;color:#B8C1E3;font-size:15px}
+.rhythm b{color:#fff}
+
+/* ---------- 6 timetable ---------- */
+.tt-scroll{margin-top:44px;overflow-x:auto}
+.tt{min-width:860px;display:grid;grid-template-columns:190px repeat(8,1fr);border:2px solid var(--ink);border-radius:6px;background:var(--card);overflow:hidden}
+.tt > div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:56px;padding:8px;font-size:13px}
+.tt .h{background:var(--cream);font-family:var(--f-display);font-weight:800;text-align:center;min-height:auto;padding:10px 6px;border-bottom:2px solid var(--ink)}
+.tt .h:first-child{text-align:left}
+.tt .p{font-weight:700;display:flex;align-items:center;gap:8px;background:#FAFBFE}
+.tt .p i{font-style:normal;font-family:var(--f-display);font-weight:800;color:var(--board);background:var(--gold);border-radius:6px;width:24px;height:24px;display:grid;place-items:center;flex:none}
+.tt .c{padding:8px 4px}
+.tt .c span{display:flex;align-items:center;height:100%;border-radius:8px;padding:6px 10px;font-weight:700;color:#fff;font-size:12.5px;line-height:1.2}
+.tt .c1{background:var(--gold);color:var(--board-2)}.tt .c2{background:var(--sky)}.tt .c3{background:var(--navy)}.tt .c4{background:var(--leaf)}.tt .c5{background:var(--red)}
+.tt .tail{border-right:0}
+.launch{margin-top:28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.launch .hand{font-size:28px}
+
+/* ---------- 7 deliverables ---------- */
+.kit{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.kit > div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;position:relative;overflow:hidden;min-width:0}
+.kit > div::after{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;opacity:.12}
+.kit .w::after{background:var(--navy)}.kit .s::after{background:var(--leaf)}
+.kit h3{display:flex;align-items:center;gap:10px}
+.kit h3 i{font-style:normal;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:18px;color:#fff}
+.kit .w h3 i{background:var(--navy)}.kit .s h3 i{background:var(--leaf)}
+.kit ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:12px}
+.kit li{display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:15.5px}
+.kit li::before{content:"✓";width:22px;height:22px;border-radius:50%;background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center;font-weight:800;font-size:12px}
+.addons{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.addons b{font-family:var(--f-display);margin-right:6px}
+.addons span{border:1.5px dashed var(--muted);border-radius:999px;padding:8px 14px;font-size:14px;background:var(--card)}
+
+/* ---------- Close ---------- */
+.close .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.close .wrap > *{min-width:0}
+.close h2 em{font-style:normal;color:var(--gold)}
+.close .lede{margin-top:18px}
+.steps{margin-top:28px;display:grid;gap:12px}
+.steps div{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:center;color:#DDE2F5}
+.steps i{font-style:normal;width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--board-2);display:grid;place-items:center;font-family:var(--f-display);font-weight:800}
+.permission{background:var(--paper);color:var(--ink);border-radius:6px;padding:30px 28px;transform:rotate(-1.5deg);box-shadow:0 30px 60px -30px rgba(0,0,0,.7);position:relative;margin-top:30px;background-image:repeating-linear-gradient(180deg,transparent 0 31px,var(--rule) 31px 32px)}
+.permission::before{content:"✂  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -";position:absolute;top:-28px;left:0;right:0;overflow:hidden;white-space:nowrap;color:#8D96B8;font-size:14px;letter-spacing:2px}
+.permission h4{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center}
+.permission h3{text-align:center;margin-top:6px;font-size:26px}
+.permission p{margin-top:16px;font-size:16px;line-height:32px}
+.permission .fill{font-family:var(--f-hand);font-size:26px;color:var(--navy);border-bottom:1.5px solid var(--ink);padding:0 6px}
+.permission .boxes{margin-top:10px;display:grid;gap:2px;line-height:32px}
+.permission .boxes label{display:flex;gap:10px;align-items:center;cursor:pointer;font-size:15.5px}
+.permission input{width:20px;height:20px;accent-color:var(--leaf)}
+.permission .sig{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.permission .sig span{border-top:1.5px solid var(--ink);padding-top:6px}
+.permission .stamp{position:absolute;right:26px;top:150px}
+.foot{padding-block:28px;font-size:13px;color:#8D96B8;text-align:center;background:var(--board-2);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+@media (max-width:980px){
+  .cover .wrap,.story,.marked,.after-wrap,.close .wrap,.fb-pair{grid-template-columns:1fr}
+  .presence{grid-template-columns:repeat(2,1fr)}
+  .doors,.opps{grid-template-columns:1fr 1fr}
+  .ig-pair{grid-template-columns:1fr}
+  .vs{display:none}
+  .ig-notes{grid-template-columns:1fr 1fr}
+  .site .hero,.why,.enquire{grid-template-columns:1fr}
+  .site .hero .photo::after{background:linear-gradient(180deg,var(--navy) 0,rgba(27,45,114,0) 30%)}
+  .stages,.branches,.site .strip{grid-template-columns:repeat(2,1fr)}
+  .site .links{display:none}
+  .slip{max-width:420px;transform:rotate(1.5deg)}
+}
+@media (max-width:640px){
+  .doors,.opps,.fixes,.kit,.ig-notes{grid-template-columns:1fr}
+  .facts-list div{grid-template-columns:1fr;gap:2px}
+  .site .block,.site .hero .copy{padding:28px 18px}
+  .form{grid-template-columns:1fr}
+  .founder{grid-template-columns:1fr}
+  .report-head{grid-template-columns:auto 1fr}
+  .report-head .term{display:none}
+  .report-foot{grid-template-columns:1fr}
+  .topnav .mark span{display:none}
+  .compare{aspect-ratio:4/3}
+  .permission .stamp{position:static;margin-top:16px}
+}
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+  .cover h1 .u path{stroke-dasharray:420;stroke-dashoffset:0;animation:draw 1.2s .4s ease-out backwards}
+  @keyframes draw{from{stroke-dashoffset:420}}
+}
+.pdfbtn{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:var(--gold);color:var(--board-2);font-weight:800;font-size:15px;text-decoration:none;border-radius:999px;padding:12px 22px;box-shadow:0 10px 24px -12px rgba(244,180,26,.8)}.pdfbtn:hover{filter:brightness(1.05)}.pdfbtn:focus-visible{outline:3px solid #fff;outline-offset:3px}.pdfbtn span{font-size:18px}
+</style>
+
+<div class="topnav">
+  <div class="wrap">
+    <div class="mark"><img src="assets/logo.svg" alt=""><span>Kids I.T. World</span></div>
+    <nav aria-label="Proposal sections">
+      <a href="#brand"><span>01</span>Brand</a>
+      <a href="#report"><span>02</span>Report card</a>
+      <a href="#opportunities"><span>03</span>Opportunities</a>
+      <a href="#website"><span>04</span>Website</a>
+      <a href="#social"><span>05</span>Social</a>
+      <a href="#deliverables"><span>06</span>Deliverables</a>
+    </nav>
+  </div>
+</div>
+
+<header class="cover board">
+  <div class="wrap">
+    <div>
+      <p class="label">A proposal for Kids I.T. World Group of Schools</p>
+      <h1>A stronger digital identity for the <span class="u">next generation<svg viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 90 4, 200 22, 396 8" fill="none" stroke="#D63230" stroke-width="5" stroke-linecap="round"/></svg></span>.</h1>
+      <p class="sub">Your school has earned 24 years of trust offline. This proposal shows how your website and social media can earn the same trust online, before the 2027–28 admission season.</p>
+      <div class="services"><span>Website rebranding</span><span>Brand identity</span><span>Social media transformation</span></div>
+    </div>
+    <div class="slip">
+      <img class="crest" src="assets/logo.svg" alt="Kids I.T. World crest">
+      <h4>Digital progress report</h4>
+      <dl>
+        <dt>Prepared for</dt><dd>Dr. Irfan Rauf, Founder &amp; Managing Trustee</dd>
+        <dt>School</dt><dd>Kids I.T. World Group of Schools</dd>
+        <dt>Prepared by</dt><dd>ScaleUp Genius Hub</dd>
+      </dl>
+      <p class="hand">Great school. Let's show it! ★</p>
+    </div>
+  </div>
+  <div class="chalkline"></div>
+</header>
+
+<section id="brand" class="ruled">
+  <div class="wrap">
+    <p class="kicker"><b>01</b>Understanding the brand</p>
+    <div class="story">
+      <div>
+        <h2>It started with eight students.</h2>
+        <div class="growth">
+          <div class="from"><b>8</b><span>students, 2002</span></div>
+          <div class="arrow">→</div>
+          <div class="to"><b>3,200+</b><span>students, 2026</span></div>
+        </div>
+        <div class="mini-stats">
+          <div><b>145+</b><span>qualified staff</span></div>
+          <div><b>5</b><span>campuses</span></div>
+          <div><b>100%</b><span>SSC result</span></div>
+        </div>
+      </div>
+      <div class="facts-list">
+        <div><i>Who</i><span>A school group run by Limra Education &amp; Welfare Society, founded by Dr. Irfan Rauf. Indian values taught to international standards, open to children of all communities.</span></div>
+        <div><i>Offers</i><span>Play group and Nursery to Grade 12 on the SSC board, junior college, robotics and STEM labs, Olympiad and NTSE coaching, IIT-JEE &amp; NEET foundation.</span></div>
+        <div><i>Where</i><span>Jatwada Road · Seven Hills · Kranti Chowk · Jinsi · Naigaon–Eidgah Road, Chhatrapati Sambhajinagar</span></div>
+        <div><i>Audience</i><span>Parents choosing a school, mostly on their phone, comparing two or three options before they book a visit. Students and alumni follow along.</span></div>
+      </div>
+    </div>
+    <div class="presence">
+      <div class="chip"><i>Website</i><b>kidsitworld.com</b><small>Main group site</small></div>
+      <div class="chip warn"><i>Website</i><b>kidsitworldschools.com</b><small>Admissions page</small></div>
+      <div class="chip warn"><i>Domain</i><b>kidsitworldgroupofschools.com</b><small>Frames the main site; used for email</small></div>
+      <div class="chip"><i>Instagram</i><b>@kidsitworld_</b><small>2,127 followers</small></div>
+      <div class="chip warn"><i>Facebook</i><b>KidsITWorldGroup</b><small>Cover out of date</small></div>
+      <div class="chip"><i>YouTube</i><b>@kidsitworld…1320</b><small>Linked two ways</small></div>
+      <div class="chip warn"><i>LinkedIn</i><b>Personal profile</b><small>No company page</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="report">
+  <div class="wrap">
+    <p class="kicker"><b>02</b>Current digital presence audit</p>
+    <h2 style="margin-top:14px;max-width:16ch">Your digital report card</h2>
+    <p class="lede" style="margin-top:16px">We reviewed both websites, the extra domain, Instagram, Facebook and Google Maps on 12 November 2026. Every remark below is something we saw on the live pages.</p>
+
+    <div class="report">
+      <div class="report-head">
+        <img src="assets/logo.svg" alt="">
+        <div><h3>Kids I.T. World Group of Schools</h3><p>Digital presence · Term 2026–27</p></div>
+        <div class="term">Assessed by<br>ScaleUp Genius Hub</div>
+      </div>
+      <div class="rc-scroll">
+        <table class="rc">
+          <thead><tr><th>Subject</th><th>What we found</th><th>Grade now</th><th>Teacher's remark</th><th>Target</th></tr></thead>
+          <tbody>
+            <tr><td class="subj">Brand identity</td><td class="found">Three spellings of the name; different colours and styles on each site and post.</td><td><span class="grade">C</span></td><td class="remark">Pick one name and one look!</td><td><span class="grade t">A</span></td></tr>
+            <tr><td class="subj">Website structure</td><td class="found">Three web addresses. 5 home-page links and the Facebook website link go to "page not found".</td><td><span class="grade">D</span></td><td class="remark">Too many doors, some locked.</td><td><span class="grade t">A</span></td></tr>
+            <tr><td class="subj">Mobile experience</td><td class="found">The admissions page runs off the right edge of a phone screen.</td><td><span class="grade">D</span></td><td class="remark">Parents can't read this.</td><td><span class="grade t">A+</span></td></tr>
+            <tr><td class="subj">Admissions journey</td><td class="found">Four competing buttons, no fees or steps, and the template text "Large Call to Action Headline" still live.</td><td><span class="grade">C</span></td><td class="remark">What should a parent do next?</td><td><span class="grade t">A</span></td></tr>
+            <tr><td class="subj">Trust &amp; proof</td><td class="found">Reviews as images, empty student testimonials, 2 of 5 campuses on Google Maps with no reviews.</td><td><span class="grade">C</span></td><td class="remark">Let happy parents speak.</td><td><span class="grade t">A</span></td></tr>
+            <tr><td class="subj">Content accuracy</td><td class="found">19, 20+, 22, 23 or 24 years; 4, 5 or 6 branches, depending on where you look.</td><td><span class="grade">C</span></td><td class="remark">Check your facts.</td><td><span class="grade t">A</span></td></tr>
+            <tr><td class="subj">Social media effort</td><td class="found">About 10 posts a month on Instagram. Real school life, shared often.</td><td><span class="grade ok">B+</span></td><td class="remark" style="color:#B07A00">Good effort! Needs one style.</td><td><span class="grade t">A</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="report-foot">
+        <div><small>Class teacher's overall remark</small><p class="hand">A bright student who isn't showing their full potential online.</p></div>
+        <div><small>Signed</small><span class="sign">ScaleUp Genius Hub</span></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:96px">Three web addresses, one school</h3>
+    <p class="lede" style="margin-top:12px">We looked at each address on its own before suggesting any change. All three belong to the same group and talk to the same parents.</p>
+    <div class="doors">
+      <div class="door"><span class="role">Main group website</span><h4>kidsitworld.com</h4><p>About, Facilities, Gallery, Progress Chart, Contact and 5 branch pages, on a free website template.</p><p class="hand">5 links lead nowhere</p></div>
+      <div class="door"><span class="role">Admissions page</span><h4>kidsitworldschools.com</h4><p>One long admissions page made with an ad-campaign page builder. 4 branch maps.</p><p class="hand">Breaks on phones</p></div>
+      <div class="door"><span class="role">Extra domain</span><h4>kidsitworldgroupofschools.com</h4><p>No pages of its own. Shows kidsitworld.com inside an old-style frame. Runs the official email.</p><p class="hand">Hard for Google to read</p></div>
+      <div class="one"><span class="arr">→</span><b>One unified website</b><p>One site on kidsitworld.com. The other two addresses forward to it, and email keeps working.</p></div>
+    </div>
+
+    <div class="marked">
+      <div>
+        <div class="frame">
+          <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">kidsitworldschools.com · as it looks today</div></div>
+          <div class="view">
+            <div class="shot">
+              <img src="assets/before-site2.jpeg" alt="Current kidsitworldschools.com home page, full length">
+              <div class="note" style="top:0.2%;left:9%;width:82%;height:4.4%"><span class="ring" style="inset:0"></span><span class="txt" style="right:-2%;top:96%">Shouting, not welcoming</span></div>
+              <div class="note" style="top:12.5%;left:54%;width:42%;height:0.8%"><span class="ring" style="inset:-60% -3%"></span><span class="txt" style="right:104%;top:-120%">Template text left in!</span></div>
+              <div class="note" style="top:24.3%;left:10%;width:80%;height:1%"><span class="ring" style="inset:-40% -2%"></span><span class="txt" style="left:30%;top:190%">Online award? Explain it.</span></div>
+              <div class="note" style="top:35.3%;left:24%;width:52%;height:1%"><span class="ring" style="inset:-40% -3%"></span><span class="txt" style="left:30%;top:200%">"awared" → awarded</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">↕ Scroll inside the window to see the whole page, with our red-pen notes.</p>
+      </div>
+      <div class="side">
+        <div class="maps">
+          <div class="maps-search"><span>⌕</span>Kids IT World school Aurangabad</div>
+          <div class="maps-row"><i class="pin"></i><div><b>Kids IT World Group Of Schools</b><span class="nr">No reviews</span><span>School · Seven Hills, opp. MGM</span></div></div>
+          <div class="maps-row"><i class="pin"></i><div><b>Kids IT World Group Of Schools</b><span class="nr">No reviews</span><span>State Board School · Jatwada Rd</span></div></div>
+          <div class="maps-missing">
+            <p class="hand">Where are the other 3 campuses?</p>
+            <div><s>Kranti Chowk</s><s>Jinsi</s><s>Naigaon–Eidgah Road</s></div>
+          </div>
+          <p class="maps-cap">Google Maps search, 12 Nov 2026. This is what a parent sees when looking for directions.</p>
+        </div>
+        <div>
+          <div class="frame">
+            <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">kidsitworld.com</div></div>
+            <div class="shot">
+              <img src="assets/before-site1.jpeg" alt="Current kidsitworld.com first screen with faint statistics on a dark photo">
+              <div class="note" style="top:56%;left:30%;width:40%;height:18%"><span class="ring" style="inset:0"></span><span class="txt" style="left:8%;top:104%">Can't read the numbers</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opportunities" class="ruled">
+  <div class="wrap">
+    <p class="kicker"><b>03</b>Problems and opportunities</p>
+    <h2 style="margin-top:14px;max-width:18ch">Every problem is a chance to stand out</h2>
+    <p class="lede" style="margin-top:16px"><span class="st c">Confirmed</span> we saw it on the live pages. <span class="st i">To investigate</span> we'll confirm it with your team in week 1.</p>
+    <div class="opps">
+      <div class="opp"><div class="area"><b>Brand identity</b><span class="st c">Confirmed</span></div><p class="now">Three names, many colours, no shared style across the websites, Facebook and Instagram.</p><p class="to">One visual identity built from your crest</p></div>
+      <div class="opp"><div class="area"><b>Website structure</b><span class="st c">Confirmed</span></div><p class="now">Three addresses and 6 links that go to "page not found".</p><p class="to">One clear site with a simple menu</p></div>
+      <div class="opp"><div class="area"><b>Content</b><span class="st c">Confirmed</span></div><p class="now">Template text, typos and numbers that disagree between pages.</p><p class="to">One fact sheet and your story in plain words</p></div>
+      <div class="opp"><div class="area"><b>Admissions</b><span class="st i">To investigate</span></div><p class="now">Four buttons and no clear steps. We'll check where enquiries go today and how fast they're answered.</p><p class="to">A dedicated admissions section with one form per branch</p></div>
+      <div class="opp"><div class="area"><b>Trust</b><span class="st c">Confirmed</span></div><p class="now">Image-only reviews, empty testimonials, 2 of 5 campuses on Google Maps.</p><p class="to">Written parent stories, results by year, reviews for every campus</p></div>
+      <div class="opp"><div class="area"><b>Mobile</b><span class="st c">Confirmed</span></div><p class="now">The admissions page runs off the screen on a phone.</p><p class="to">Mobile-first design with call and WhatsApp always in reach</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="website" class="board">
+  <div class="wrap">
+    <p class="kicker"><b>04</b>Website transformation</p>
+    <h2 style="margin-top:14px;max-width:15ch">Drag to see the difference</h2>
+    <p class="lede" style="margin-top:16px">The first screen a parent sees, today and after the rebrand. Same school, same crest, same photos.</p>
+    <div class="compare" id="cmp">
+      <img src="assets/after-fold.jpeg" alt="Proposed new kidsitworld.com home page">
+      <img class="before" src="assets/before-fold2.jpeg" alt="Current kidsitworldschools.com home page">
+      <span class="lab b">Before</span><span class="lab a">After · concept</span>
+      <input type="range" id="cmp-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+      <span class="handle"></span>
+    </div>
+    <div class="hint"><span>← Today: kidsitworldschools.com</span><span class="hand">drag me!</span><span>Proposed: kidsitworld.com →</span></div>
+  </div>
+</section>
+
+<section class="ruled" style="padding-top:clamp(56px,7vw,96px)">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><h3>The full home page</h3><span class="stamp">Proposed design concept</span></div>
+    <p class="lede" style="margin-top:12px">Organised around one job: getting a parent to book a campus visit. kidsitworldschools.com and kidsitworldgroupofschools.com forward here.</p>
+    <div class="after-wrap">
+      <div class="frame">
+        <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">kidsitworld.com</div></div>
+        <div class="site" id="mock">
+          <div class="nav">
+            <div class="brand"><img src="assets/logo.svg" alt=""><div>Kids I.T. World<small>Group of Schools · Est. 2002</small></div></div>
+            <div class="links"><span>About</span><span>Our Schools</span><span>Academics</span><span>Achievements</span><span>Admissions</span></div>
+            <span class="btn navy" style="padding:9px 18px;font-size:14px">Book a visit</span>
+          </div>
+          <div class="hero">
+            <div class="copy">
+              <span class="pill">Admissions open · 2027–28</span>
+              <h3>Rooted in values. <span>Ready for the world.</span></h3>
+              <p>Nursery to Grade 12 across five campuses in Chhatrapati Sambhajinagar. Conceptual learning, robotics and STEM labs, and a 100% SSC result.</p>
+              <div class="ctas"><span class="btn gold">Book a campus visit</span><span class="btn ghost">Find your nearest branch</span></div>
+            </div>
+            <div class="photo"><div class="badge"><b>100%</b>SSC board result</div></div>
+          </div>
+          <div class="strip">
+            <div><b>24</b><span>years since 2002</span></div>
+            <div><b>3,200+</b><span>students</span></div>
+            <div><b>145+</b><span>qualified staff</span></div>
+            <div><b>5</b><span>campuses</span></div>
+          </div>
+          <div class="block">
+            <p class="k">Academics</p>
+            <h4>A clear path, from first day to board exam</h4>
+            <div class="stages">
+              <div class="stage"><i>Early years</i><b>Play group &amp; Nursery</b><span>Play-based learning in cheerful, small classrooms.</span></div>
+              <div class="stage"><i>Primary</i><b>Grades 1–5</b><span>Inquiry and hands-on learning, Olympiad preparation.</span></div>
+              <div class="stage"><i>Secondary</i><b>Grades 6–10 · SSC</b><span>Board-ready, with NTSE and scholarship coaching.</span></div>
+              <div class="stage"><i>Senior</i><b>Grades 11–12</b><span>Junior college with IIT-JEE &amp; NEET foundation.</span></div>
+            </div>
+          </div>
+          <div class="block why">
+            <div>
+              <p class="k">Facilities &amp; achievements</p>
+              <h4>Education of both worlds</h4>
+              <ul>
+                <li><span><b>Robotics &amp; STEM labs</b> and smart digital classrooms</span></li>
+                <li><span><b>Values first:</b> Indian culture taught to international standards</span></li>
+                <li><span><b>Sport every week:</b> cricket, football, netball, chess</span></li>
+                <li><span><b>Safe transport</b> from every branch</span></li>
+              </ul>
+            </div>
+            <div class="pics">
+              <div style="background-image:url(assets/p3.jpg)" role="img" aria-label="Students with trophies"></div>
+              <div style="background-image:url(assets/p8.jpg)" role="img" aria-label="Netball winners"></div>
+            </div>
+          </div>
+          <div class="block founder">
+            <div class="mono">IR</div>
+            <div>
+              <blockquote>"We started with eight children. Our aim has never changed: to produce global citizens for a peaceful world."</blockquote>
+              <cite>Dr. Irfan Rauf · Founder &amp; Managing Trustee</cite>
+            </div>
+          </div>
+          <div class="block">
+            <p class="k">Our schools</p>
+            <h4>There's a Kids I.T. World near you</h4>
+            <div class="branches">
+              <div class="branch"><b>Jatwada Road</b>Honaji Nagar, Harsul<a>Directions →</a></div>
+              <div class="branch"><b>Seven Hills</b>Motiwala Nagar, opp. MGM<a>Directions →</a></div>
+              <div class="branch"><b>Kranti Chowk</b>Nutan Colony<a>Directions →</a></div>
+              <div class="branch"><b>Jinsi</b>Khas Gate, Baijipura Rd<a>Directions →</a></div>
+              <div class="branch"><b>Naigaon</b>Eidgah Road<a>Directions →</a></div>
+            </div>
+          </div>
+          <div class="block enquire">
+            <div>
+              <p class="k">Admissions</p>
+              <h4>See the school before you decide</h4>
+              <p style="color:#545B7A">Pick a branch and grade. Our counsellor calls you within one working day to fix a visit.</p>
+            </div>
+            <form class="form" onsubmit="event.preventDefault()">
+              <label>Parent name<input id="f-name" value="Ayesha Khan"></label>
+              <label>Phone<input id="f-phone" value="98xxx xxxxx"></label>
+              <label>Branch<select id="f-branch"><option>Seven Hills</option><option>Jatwada Road</option><option>Kranti Chowk</option><option>Jinsi</option><option>Naigaon</option></select></label>
+              <label>Grade<select id="f-grade"><option>Nursery</option><option>Grade 1</option><option>Grade 6</option><option>Grade 11</option></select></label>
+              <button class="btn navy full" type="submit">Request a campus visit</button>
+            </form>
+          </div>
+          <footer><span>© 2026 Kids I.T. World Group of Schools · Limra Education &amp; Welfare Society</span><span>Helpline 90212 11867</span></footer>
+        </div>
+      </div>
+      <div>
+        <div class="phone">
+          <div class="notch"><i></i></div>
+          <div class="view mini" style="max-height:none;overflow:visible">
+            <div class="site"><div class="nav" style="padding:10px 14px"><div class="brand" style="font-size:16px"><img src="assets/logo.svg" alt="" style="width:32px;height:32px">Kids I.T. World</div><span style="font-size:20px;color:var(--navy)">☰</span></div></div>
+            <div class="m-hero"><span style="color:var(--gold);font-weight:700;font-size:11px">ADMISSIONS OPEN · 2027–28</span><h5>Rooted in values. <span>Ready for the world.</span></h5></div>
+            <div class="m-photo"></div>
+            <div class="m-stats"><div><b>3,200+</b>students</div><div><b>100%</b>SSC result</div></div>
+            <div class="m-list"><div>Play group &amp; Nursery →</div><div>Grades 1–5 →</div><div>Grades 6–10 · SSC →</div><div>Grades 11–12 →</div><div>Find a branch →</div></div>
+            <div class="m-sticky"><span style="background:var(--gold);color:var(--board-2)">Book visit</span><span style="background:#25D366;color:#fff">WhatsApp</span></div>
+          </div>
+        </div>
+        <p class="cap">On a phone: "Book visit" and WhatsApp are always one tap away.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:96px">Proposed sitemap</h3>
+    <p class="lede" style="margin-top:12px">One site replaces three. New pages are in green. Final pages depend on what we agree with your team.</p>
+    <div class="tree">
+      <div class="tree-in">
+        <span class="root">kidsitworld.com</span>
+        <span class="stem"></span>
+        <div class="branches-row">
+          <div class="node"><b>Home</b><span>Admissions banner, stats, campuses</span></div>
+          <div class="node"><b>About Us</b><span>Story since 2002</span><span>Founder's message</span></div>
+          <div class="node hl"><b>Our Schools</b><span class="new">5 campus pages</span><span>Map, timings, phone</span></div>
+          <div class="node"><b>Academics</b><span>Early years to Grade 12</span></div>
+          <div class="node"><b>Facilities</b><span>Labs, sport, transport</span></div>
+          <div class="node"><b>Achievements</b><span class="new">Results by year</span><span>Awards, explained</span></div>
+          <div class="node"><b>Parent Stories</b><span class="new">Written testimonials</span></div>
+          <div class="node hl"><b>Admissions</b><span class="new">Steps, documents, FAQs</span><span class="new">Book a visit</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="redirects"><span>kidsitworldschools.com <b>→ /admissions</b></span><span>kidsitworldgroupofschools.com <b>→ Home</b> (email unchanged)</span></div>
+
+    <h3 style="margin-top:96px">Red pen, crossed out</h3>
+    <div class="fixes">
+      <div class="fix"><p class="was">Three addresses, different facts</p><p class="now">One site, one fact sheet. Google ranking and enquiries combined in one place.</p></div>
+      <div class="fix"><p class="was">Loud banners, template text</p><p class="now">A calm brand system from your crest: navy, marigold, red and leaf green.</p></div>
+      <div class="fix"><p class="was">Breaks on phones</p><p class="now">Mobile-first, with a sticky Book visit and WhatsApp bar.</p></div>
+      <div class="fix"><p class="was">Four buttons, no next step</p><p class="now">One goal per page: book a campus visit. Each enquiry goes to the right branch.</p></div>
+      <div class="fix"><p class="was">Reviews as unreadable images</p><p class="now">Written parent stories with names and grades, and results by year.</p></div>
+      <div class="fix"><p class="was">Links to "page not found"</p><p class="now">Every link tested before launch, and ad links forwarded on day one.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="social" class="board">
+  <div class="wrap">
+    <p class="kicker"><b>05</b>Social media transformation</p>
+    <h2 style="margin-top:14px;max-width:16ch">Nine posts that look like one school</h2>
+    <p class="lede" style="margin-top:16px">Instagram @kidsitworld_ today, and the same feed after the rebrand, made from your own event photos.</p>
+
+    <div class="ig-pair">
+      <div>
+        <span class="tag b">Before · 12 Nov 2026</span>
+        <div class="ig">
+          <div class="top">
+            <div class="av"><div><img src="assets/logo.svg" alt=""></div></div>
+            <div><div class="handle">kidsitworld_</div><div class="counts"><span><b>2,127</b> followers</span><span><b>455</b> following</span></div></div>
+          </div>
+          <div class="bio"><b>Kids IT World</b>With 22+ years of Experience, the Kids IT World group of schools strengthens its expertise in Educating the Nation.<br><a>www.kidsitworld.com</a></div>
+          <div class="grid9">
+            <img src="assets/p1.jpg" alt="Diwali activity poster"><img src="assets/p2.jpg" alt="Sideways video cover"><img src="assets/p3.jpg" alt="Team photo with trophies">
+            <img src="assets/p4.jpg" alt="Event performer"><img src="assets/p5.jpg" alt="Black and white crowd"><img src="assets/p6.jpg" alt="Picnic ground">
+            <img src="assets/p7.jpg" alt="Blank black cover"><img src="assets/p8.jpg" alt="Netball congratulations"><img src="assets/p9.jpg" alt="Hey parents video cover">
+          </div>
+        </div>
+      </div>
+      <div class="vs">vs</div>
+      <div>
+        <span class="tag a">After · proposed concept</span>
+        <div class="ig">
+          <div class="top">
+            <div class="av"><div><img src="assets/logo.svg" alt=""></div></div>
+            <div><div class="handle">kidsitworld_</div><div class="counts"><span><b>Group of Schools</b> · Education</span></div></div>
+          </div>
+          <div class="bio"><b>Kids I.T. World Group of Schools</b>Nursery to Grade 12 · 5 campuses in Chh. Sambhajinagar<br>Robotics &amp; STEM · 100% SSC result · Since 2002<br><a>kidsitworld.com/admissions</a></div>
+          <div class="hl">
+            <div><i style="color:var(--red)">Adm</i>Admissions</div>
+            <div><i style="color:var(--navy)">5</i>Campuses</div>
+            <div><i style="color:var(--leaf)">100%</i>Results</div>
+            <div><i style="color:#C98A00">★</i>Events</div>
+            <div><i style="color:var(--navy)">❝</i>Parents</div>
+          </div>
+          <div class="grid9">
+            <div class="t photo" style="background-image:url(assets/p9.jpg)"><img class="logo" src="assets/logo.svg" alt=""><span class="lab">Nursery admissions</span><span class="big">Their first school, chosen with care.</span></div>
+            <div class="t navy"><span class="lab gold-t">Since 2002</span><span class="big">8 students.<br>Now <span class="gold-t">3,200+.</span></span><i class="bar"></i></div>
+            <div class="t photo" style="background-image:url(assets/p3.jpg)"><img class="logo" src="assets/logo.svg" alt=""><span class="lab">Sports</span><span class="big">Champions, again.</span></div>
+            <div class="t gold"><span class="lab">Founder's note</span><span class="big">"Global citizens for a peaceful world."</span><span class="lab" style="margin-top:6px">Dr. Irfan Rauf</span></div>
+            <div class="t photo" style="background-image:url(assets/p8.jpg)"><img class="logo" src="assets/logo.svg" alt=""><span class="lab">Netball</span><span class="big">1st place, girls' team.</span></div>
+            <div class="t red"><span class="lab">SSC results</span><span class="big" style="font-size:clamp(22px,3.4vw,36px)">100%</span><span class="lab">pass, every year</span></div>
+            <div class="t photo" style="background-image:url(assets/p4.jpg)"><img class="logo" src="assets/logo.svg" alt=""><span class="lab">Campus life</span><span class="big">Fun day at Jatwada.</span></div>
+            <div class="t cream"><span class="lab" style="color:var(--red)">Our campuses</span><span class="big" style="font-size:clamp(11px,1.5vw,15px)">Jatwada Road<br>Seven Hills<br>Kranti Chowk<br>Jinsi · Naigaon</span><i class="bar"></i></div>
+            <div class="t photo" style="background-image:url(assets/p6.jpg)"><img class="logo" src="assets/logo.svg" alt=""><span class="lab">Outdoor learning</span><span class="big">Class outside today.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ig-notes">
+      <div><p class="hand">No one style</p><p>Every post uses different colours, fonts and layouts.</p></div>
+      <div><p class="hand">Broken covers</p><p>One reel cover is sideways, another is fully black.</p></div>
+      <div><p class="hand">Three names</p><p>"Kids IT World", "Kids I.T. World" and "Oxford Public School".</p></div>
+      <div><p class="hand">No path to admission</p><p>The bio has no grades, campuses, admission link or highlights.</p></div>
+    </div>
+
+    <div class="fb-pair">
+      <div>
+        <span class="tag b">Facebook · before</span>
+        <div class="fb">
+          <div class="cv" style="background-image:url(assets/fb-cover.jpg)"></div>
+          <div class="who"><div class="av2"><img src="assets/logo.svg" alt=""></div><div><b>Kidsitworld</b><small>Secondary school</small></div></div>
+          <div class="info"><span class="bad">Cover says "19 Yrs+" and "4 Branches"</span><span class="bad">Website link → page not found</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="tag a">Facebook · after (concept)</span>
+        <div class="fb">
+          <div class="cv fbnew"><div class="c"><i>Admissions open · 2027–28</i><b>24 years. 5 campuses.<br><span>3,200+ students.</span></b></div><div class="p"></div></div>
+          <div class="who"><div class="av2"><img src="assets/logo.svg" alt=""></div><div><b>Kids I.T. World Group of Schools</b><small>School · Chhatrapati Sambhajinagar</small></div></div>
+          <div class="info"><span>Nursery to Grade 12 · 100% SSC result · Since 2002</span><span class="good">kidsitworld.com/admissions</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:88px">Nine content pillars</h3>
+    <div class="pillars">
+      <span style="color:#FFD36A">School life &amp; activities</span>
+      <span style="color:#7EE0A8">Academic achievements</span>
+      <span style="color:#A9BCFF">Faculty introductions</span>
+      <span style="color:#7EE0A8">Student achievements</span>
+      <span style="color:#A9BCFF">Parent testimonials</span>
+      <span style="color:#FFD36A">Events &amp; celebrations</span>
+      <span style="color:#FF9C95">Admissions &amp; announcements</span>
+      <span style="color:#9FE6F2">Tips for parents</span>
+      <span style="color:#9FE6F2">Campus facilities</span>
+    </div>
+    <p class="rhythm"><b>12</b> feed posts and <b>8</b> reels a month · stories on school days · <b>6</b> templates your staff can use · one campus spotlight every month</p>
+  </div>
+</section>
+
+
+
+<section id="deliverables">
+  <div class="wrap">
+    <p class="kicker"><b>06</b>Deliverables</p>
+    <h2 style="margin-top:14px">What's in the school bag</h2>
+    <div class="kit">
+      <div class="w">
+        <h3><i>⌂</i>Website services</h3>
+        <ul>
+          <li><span>Website strategy and structure (sitemap above)</span></li>
+          <li><span>UI/UX redesign of the home page and all key pages</span></li>
+          <li><span>Development on kidsitworld.com, with an easy admin panel</span></li>
+          <li><span>Mobile-first, responsive build tested on common phones</span></li>
+          <li><span>Admission enquiry form routed to each branch, plus WhatsApp</span></li>
+          <li><span>Content restructuring: one fact sheet, rewritten pages, 5 campus pages</span></li>
+          <li><span>Forwarding of the other two addresses, email left working</span></li>
+        </ul>
+      </div>
+      <div class="s">
+        <h3><i>◎</i>Social media services</h3>
+        <ul>
+          <li><span>Profile optimisation on Instagram, Facebook and YouTube</span></li>
+          <li><span>Visual identity: post and reel-cover templates, highlight covers, Facebook cover</span></li>
+          <li><span>Content strategy across the nine pillars</span></li>
+          <li><span>Nine-post launch grid</span></li>
+          <li><span>Monthly content creation and management, 12 posts and 8 reels a month, if included</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="addons"><b>Optional add-ons</b><span>Campus photo &amp; video shoot</span><span>Google profiles for all 5 campuses</span><span>LinkedIn company page</span><span>Admission season ad campaign</span><span>Printed brochure</span></div>
+  </div>
+</section>
+
+<section class="close board">
+  <div class="wrap">
+    <div>
+      <p class="kicker"><b>Next</b>Next steps</p>
+      <h2 style="margin-top:14px">Let's give parents the school they'll <em>meet</em> in person.</h2>
+      <p class="lede">A 30-minute call to walk through this proposal, confirm the facts and agree on a start date. Investment for each service is shared on that call.</p>
+      <div class="steps">
+        <div><i>1</i><span><b>Review call</b> with Dr. Irfan Rauf and the corporate office</span></div>
+        <div><i>2</i><span><b>Scope &amp; investment</b> confirmed in writing</span></div>
+        <div><i>3</i><span><b>Kickoff</b> within 7 days of approval</span></div>
+      </div>
+    </div>
+    <div class="permission">
+      <h4>Permission slip</h4>
+      <h3>Kids I.T. World goes digital</h3>
+      <p>I, <span class="fill">Dr. Irfan Rauf</span>, would like to go ahead with:</p>
+      <div class="boxes">
+        <label for="pw"><input type="checkbox" id="pw" checked> Website rebranding</label>
+        <label for="pb"><input type="checkbox" id="pb" checked> Brand identity</label>
+        <label for="ps"><input type="checkbox" id="ps" checked> Social media transformation</label>
+      </div>
+      <div class="sig"><span>Signature</span><span>Date</span></div>
+      <span class="stamp">Ready to start</span>
+    </div>
+  </div>
+</section>
+<p class="foot">Prepared by ScaleUp Genius Hub for Kids I.T. World Group of Schools · "Before" images are live captures from 12 November 2026 · "After" images are proposed design concepts</p>
+
+<script>
+(function(){
+  var cmp=document.getElementById('cmp'), r=document.getElementById('cmp-range');
+  if(cmp&&r){ r.addEventListener('input',function(){cmp.style.setProperty('--x',r.value+'%');}); }
+  var links=[].slice.call(document.querySelectorAll('.topnav nav a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        links.forEach(function(a){
+          var on=a.getAttribute('href')==='#'+e.target.id;
+          a.classList.toggle('on',on);
+          if(on){ try{ a.parentNode.scrollTo({left:a.offsetLeft-40,behavior:'smooth'}); }catch(_){} }
+        });
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    ['brand','report','opportunities','website','social','deliverables'].forEach(function(id){var el=document.getElementById(id); if(el) io.observe(el);});
+  }
+})();
+</script>
+</body></html>
